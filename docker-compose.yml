@@ -28,6 +28,7 @@ services:
       - -c
       - |
         npx sequelize db:migrate
+        npx sequelize db:seed:all
         npm start
     volumes:
       - "/usr/src/app/node_modules"
