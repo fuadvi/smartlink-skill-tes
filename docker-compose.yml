@@ -1,0 +1,43 @@
+version: "3.7"
+services:
+  database:
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=smartlink
+      - MYSQL_ROOT_PASSWORD=1
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - ./database:/var/lib/mysql
+    networks:
+      - backend_network
+
+  server:
+    restart: always
+    build:
+      context: .
+    environment:
+      - DB_HOSTNAME=database
+      - DB_NAME=smartlink
+      - DB_USERNAME=root
+      - DB_PASSWORD=1
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npx sequelize db:migrate
+        npm start
+    volumes:
+      - "/usr/src/app/node_modules"
+      - ".:/usr/src/app"
+    depends_on:
+      - database
+    ports:
+      - 8000:8000
+    networks:
+      - backend_network
+networks:
+  backend_network:
+    name: backend_network
