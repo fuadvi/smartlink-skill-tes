@@ -27,8 +27,6 @@ services:
       - /bin/sh
       - -c
       - |
-        npx sequelize db:migrate
-        npx sequelize db:seed:all
         npm start
     volumes:
       - "/usr/src/app/node_modules"
@@ -36,7 +34,7 @@ services:
     depends_on:
       - database
     ports:
-      - 8000:8000
+      - 3000:3000
     networks:
       - backend_network
 networks:

@@ -12,4 +12,8 @@ RUN npm install -g sequelize
 
 RUN npm install -g mysql2
 
-EXPOSE 8000
+RUN npm install -g nodemon
+
+RUN npm install fastest-validator --save
+
+EXPOSE 3000
