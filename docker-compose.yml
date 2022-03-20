@@ -23,10 +23,15 @@ services:
       - DB_NAME=smartlink
       - DB_USERNAME=root
       - DB_PASSWORD=1
+      - JWT_SECRET=smartlink
+      - JWT_SECRET_REFRESH=refreshtoken!2
+      - JWT_ACCESS_TOKEN_EXPIRED=5m
+      - JWT_REFRESH_TOKEN_EXPIRED=1d
     command:
       - /bin/sh
       - -c
       - |
+        npx sequelize db:migrate
         npm start
     volumes:
       - "/usr/src/app/node_modules"

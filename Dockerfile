@@ -16,4 +16,6 @@ RUN npm install -g nodemon
 
 RUN npm install fastest-validator --save
 
+RUN npm install jsonwebtoken --save
+
 EXPOSE 3000
