@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("users", {
+    await queryInterface.createTable("layanan", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -13,16 +13,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      username: {
-        type: Sequelize.STRING,
+      unit: {
+        type: Sequelize.ENUM,
+        values: ["kg", "pcs", "cm", "m2"],
         allowNull: false,
       },
-      password: {
-        type: Sequelize.STRING,
+      harga: {
+        type: Sequelize.DECIMAL,
         allowNull: false,
       },
-      telepon: {
-        type: Sequelize.STRING,
+      userId: {
+        type: Sequelize.INTEGER,
+        references: { model: "users", key: "id" },
         allowNull: false,
       },
       created_at: {
@@ -34,15 +36,9 @@ module.exports = {
         allowNull: false,
       },
     });
-
-    await queryInterface.addConstraint("users", {
-      type: "unique",
-      fields: ["username"],
-      name: "UNIQUE_USERS_username",
-    });
   },
 
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("users");
+    await queryInterface.dropTable("layanan");
   },
 };
