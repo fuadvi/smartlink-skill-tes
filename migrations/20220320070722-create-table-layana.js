@@ -19,7 +19,7 @@ module.exports = {
         allowNull: false,
       },
       harga: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.DECIMAL(10, 2),
         allowNull: false,
       },
       userId: {

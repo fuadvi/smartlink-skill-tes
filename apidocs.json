@@ -1,0 +1,133 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API SMARTLINK",
+    "description": "DOCUMENTASI API SMARTLINK",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/",
+      "description": "Local Server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Register",
+      "description": "Create User"
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post": {
+        "tags": ["Register"],
+        "summary": "Register",
+        "description": "Register Account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama": {
+                    "type": "string",
+                    "example": "fuad"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "maulana"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "admin"
+                  },
+                  "telepon": {
+                    "type": "string",
+                    "example": "082275757575"
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Successful operation",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "message": {
+                        "type": "string",
+                        "example": "Successfully created user"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "status": "error",
+              "message": "validasi gagal"
+            },
+            "409": {
+              "status": "error",
+              "message": "user sudah terdaftar"
+            }
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "tags": ["Register"],
+        "summary": "Register",
+        "description": "Register Account",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nama": {
+                    "type": "string",
+                    "example": "fuad"
+                  },
+                  "username": {
+                    "type": "string",
+                    "example": "maulana"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "admin"
+                  },
+                  "telepon": {
+                    "type": "string",
+                    "example": "082275757575"
+                  }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "code": "200",
+              "status": "success",
+              "message": "berhasil terdaftar"
+            },
+            "400": {
+              "status": "error",
+              "message": "validasi gagal"
+            },
+            "409": {
+              "status": "error",
+              "message": "user sudah terdaftar"
+            }
+          }
+        }
+      }
+    }
+  }
+}
